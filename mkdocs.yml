@@ -1,0 +1,70 @@
+site_name: "MongoDB Wildfire Workshop on LinuxONE"
+nav:
+  - Home: index.md
+  - Connectivity to Lab Environment: access.md
+ 
+# Project Information
+site_url: 'https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/'
+site_description: MongoDB Wildfire Workshop on LinuxONE
+site_author: Sam Amsavelu
+
+# Repository Information
+repo_url: 'https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/'
+docs_dir: 'docs'
+site_dir: 'site'
+remote_branch: 'gh-pages'
+remote_name: 'origin'
+theme:
+  logo: assets/wsc-logo.png
+  favicon: assets/wsc-logo.png
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+features:
+- content.tabs.link
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_css:
+  - "stylesheets/extra.css"
+
+copyright: |
+  &copy; 2025 IBM
