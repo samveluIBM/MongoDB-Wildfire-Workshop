@@ -1,7 +1,11 @@
 site_name: "MongoDB Wildfire Workshop on LinuxONE"
 nav:
   - Home: index.md
-  - Connectivity to Lab Environment: access.md
+  - Hands-On Labs:
+    - Connectivity to IBM Cloud Lab Environment: cloudaccess.md
+    - Connectivity to IBM On-premise Lab Environment: onpremaccess.md
+    - MongoDB installation: install.md    
+  - Locally Building docs: localdocbuild.md
  
 # Project Information
 site_url: 'https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/'
@@ -15,8 +19,8 @@ site_dir: 'site'
 remote_branch: 'gh-pages'
 remote_name: 'origin'
 theme:
-  logo: assets/wsc-logo.png
-  favicon: assets/wsc-logo.png
+  logo: assets/images/wsc-logo.png
+  favicon: assets/images/wsc-logo.png
   name: material
   font:
     text: IBM Plex Sans
@@ -36,8 +40,9 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-features:
-- content.tabs.link
+  features:
+    - content.tabs.link
+    - content.code.copy
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
