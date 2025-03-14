@@ -63,11 +63,14 @@ Enter the following command to list the /tmp/labtest directory
 #### Drop a MongoDB database 
 
 In this lab we are going to use the **db.dropDatabase()** utility to drop our database "labtest". 
+First let us connect to **mongosh** and list the databases in the environment by using **show dbs** command
 
-Enter the following command to connect to MongoDB
+Enter the following command to connect to MongoDB and list the databases
 
 ``` bash
    mongosh
+   show dbs
+
 ```
 
 
@@ -83,7 +86,7 @@ Enter the following command to connect to MongoDB
  
       ```
 
-Now connect to the "labtest" database,drop the database and then list the databases by entering the following series of commands
+Now connect to the "labtest" database, drop that database by **db.dropDatabase()** utility and then list the databases by entering the following series of commands
 
 ``` bash
    use labtest;
@@ -91,6 +94,60 @@ Now connect to the "labtest" database,drop the database and then list the databa
    show dbs
 ```
 
+???- example "The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]"
+
+      ```
+      Enterprise test> use labtest
+      switched to db labtest
+      Enterprise labtest> db.dropDatabase();
+      { ok: 1, dropped: 'labtest' }
+      Enterprise labtest> show dbs
+      admin    40.00 KiB
+      config  108.00 KiB
+      local    40.00 KiB
+      Enterprise labtest>
+
+ 
+      ```
+
+Now let us exit the mongosh shell environment by issuing exit command
+
+   ``` bash
+         exit
+   ```
+
+#### Restore a MongoDB database 
+
+In this part of the lab we are going to use the **mongorestore** utility to restore our deleted lab database "labtest". 
+
+Enter the following command to restore the backup of the labtest database available inside /tmp  directory
+
+
+``` bash
+   mongorestore -v --db labtest  --drop  /tmp/labtest
+```
+
+
+???- example "The following is an example where the terminal will show that the database dump is restored [click to expand me]"
+
+      ```
+         [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongorestore -v --db labtest  --drop  /tmp/labtest
+         2025-03-14T14:27:41.092-0400    using write concern: &{majority <nil> 0s}
+         2025-03-14T14:27:41.096-0400    The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+         2025-03-14T14:27:41.096-0400    building a list of collections to restore from /tmp/labtest dir
+         2025-03-14T14:27:41.096-0400    found collection labtest.employee bson to restore to labtest.employee
+         2025-03-14T14:27:41.096-0400    found collection metadata from labtest.employee to restore to labtest.employee
+         2025-03-14T14:27:41.096-0400    reading metadata for labtest.employee from /tmp/labtest/employee.metadata.json
+         2025-03-14T14:27:41.096-0400    creating collection labtest.employee with no metadata
+         2025-03-14T14:27:41.102-0400    restoring labtest.employee from /tmp/labtest/employee.bson
+         2025-03-14T14:27:41.113-0400    finished restoring labtest.employee (2 documents, 0 failures)
+         2025-03-14T14:27:41.113-0400    no indexes to restore for collection labtest.employee
+         2025-03-14T14:27:41.113-0400    2 document(s) restored successfully. 0 document(s) failed to restore.
+         [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+
+
+
+      ```
 
 ## Summary
  
