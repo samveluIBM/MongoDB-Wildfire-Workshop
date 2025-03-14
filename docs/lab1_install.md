@@ -115,8 +115,31 @@ Use the following commands:
 ???- example "The following example shows the output of succesful execution of setup.sh script [click to expand me]"
 
       ```
-      
       Installed products updated.
+
+      Installed:
+      ansible-9.2.0-1.el8.noarch
+      ansible-core-2.16.3-2.el8.s390x
+      python3-jmespath-0.9.0-11.el8.noarch
+      python3.12-3.12.8-1.el8_10.s390x
+      python3.12-cffi-1.16.0-2.el8.s390x
+      python3.12-cryptography-41.0.7-1.el8.s390x
+      python3.12-libs-3.12.8-1.el8_10.s390x
+      python3.12-pip-wheel-23.2.1-4.el8.noarch
+      python3.12-ply-3.11-2.el8.noarch
+      python3.12-pycparser-2.20-2.el8.noarch
+      python3.12-pyyaml-6.0.1-2.el8.s390x
+      python39-3.9.20-1.module+el8.10.0+22342+478c159e.s390x
+      python39-libs-3.9.20-1.module+el8.10.0+22342+478c159e.s390x
+      python39-pip-20.2.4-9.module+el8.10.0+21329+8d76b841.noarch
+      python39-pip-wheel-20.2.4-9.module+el8.10.0+21329+8d76b841.noarch
+      python39-setuptools-50.3.2-6.module+el8.10.0+22183+c898c0c1.noarch
+      python39-setuptools-wheel-50.3.2-6.module+el8.10.0+22183+c898c0c1.noarch
+      sshpass-1.09-4.el8.s390x
+
+      Complete!
+      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+
       ```
 #### Run the ansible playbook
 In this step we will run the ansible playbook to install MongoDB. Use the following command:

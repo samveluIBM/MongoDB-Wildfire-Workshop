@@ -29,7 +29,7 @@ Welcome to our MongoDB wildfire workshop on LinuxONE. Organizations can leverage
 * [David Simpson](mailto:simpson.dave@ibm.com)
 
 ### Acknowledgements
-* Thanks to the following Contributors for this workshop: Jacob Emery, Barry Silliman and Dorothy Quincy
+* Thanks to the following Contributors for this workshop: Jacob Emery, Matt Mondics, Barry Silliman and Dorothy Quincy
 
 
 

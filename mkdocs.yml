@@ -4,7 +4,9 @@ nav:
   - Hands-On Labs:
     - Connectivity to IBM Cloud Lab Environment: cloudaccess.md
     - Connectivity to IBM On-premise Lab Environment: onpremaccess.md
-    - MongoDB installation: install.md    
+    - MongoDB Installation: lab1_install.md   
+    - MongoDB Usage: lab2_basics.md 
+    - MongoDB Operations: lab3_operations.md
   - Locally Building docs: localdocbuild.md
  
 # Project Information

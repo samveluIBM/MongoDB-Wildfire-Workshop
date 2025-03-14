@@ -16,8 +16,8 @@
 
 *   Enter your ip address from the user information section in the Host Name field and press Open
 
-* In the displayed terminal enter the login as: *cecuser* and press enter
-* For the password prompt enter *mongodblabuser$*
+* In the displayed terminal enter the login as: **cecuser** and press enter
+* For the password prompt enter **mongodblabuser$**
 
 The following is an example of successful login to the Linux Guest
 
