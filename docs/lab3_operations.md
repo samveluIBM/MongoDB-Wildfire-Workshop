@@ -10,7 +10,6 @@ We will be performing some of the following basic operations.
 3. Restore the database
 4. Shutdown a MongoDB Enterprise
 5. Startup a MongoDB Enterprise
-6. Setup a MongoDB replication cluster 
 
 
 ### MongoDB basic operations steps
@@ -148,6 +147,136 @@ Enter the following command to restore the backup of the labtest database availa
 
 
       ```
+Let us connect back to **mongosh** and list the databases in the environment by using **show dbs** command
+
+
+Enter the following command to connect to MongoDB and list the databases and then connect to labtest database and find the documents
+
+``` bash
+   mongosh
+   show dbs
+   use labtest
+   db.employee.find()
+```
+???- example "The following is an example where the terminal will show that the database dump is restored [click to expand me]"
+
+      ```
+
+      Enterprise test> show dbs
+      admin    40.00 KiB
+      config   96.00 KiB
+      labtest  40.00 KiB
+      local    40.00 KiB
+      Enterprise test> use labtest
+      switched to db labtest
+      Enterprise labtest> db.employee.find()
+      [
+      {
+         _id: ObjectId('67d46f56d027864d37a63a58'),
+         name: 'John Doe',
+         number: 1000,
+         lastUpdated: ISODate('2025-03-14T18:03:35.947Z')
+      },
+      {
+         _id: ObjectId('67d46f61d027864d37a63a5a'),
+         name: 'Super Man',
+         number: 2000
+      }
+      ]
+      Enterprise labtest>
+
+      ```
+
+
+#### Shutdown MongoDB Enterprise 
+
+In this part of the lab we are going to shutdown MongoDB by using  **db.shutdownServer()**. You must issue the db.shutdownServer() operation against the admin database. 
+
+Enter the following commands  
+
+
+``` bash
+   use admin
+   db.shutdownServer()
+   exit
+```
+
+???- example "The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]"
+
+      ```
+      Enterprise labtest> use admin
+      switched to db admin
+      Enterprise admin> db.shutdownServer()
+      MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
+      Enterprise admin> exit
+      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+
+ 
+      ```
+
+#### Start a MongoDB Enterprise 
+
+In this part of the lab we are going to start MongoDB Enterprise. 
+We need to specify the following parameters: Data, log file and specify the fork option to start the mongod in the background. Then we will connect to mongosh shell.
+
+Enter the following commands  
+
+
+``` bash
+   mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
+   mongosh
+```
+
+???- example "The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]"
+
+      ```
+      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
+      about to fork child process, waiting until server is ready for connections.
+      forked process: 112970
+      child process started successfully, parent exiting
+      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#mongosh
+      Current Mongosh Log ID: 67d49ba95b1ee08487a63a57
+      Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+      Using MongoDB:          7.0.17
+      Using Mongosh:          2.4.2
+
+      For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+      ------
+         The server generated these startup warnings when booting
+         2025-03-14T16:56:05.980-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+         2025-03-14T16:56:06.187-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+         2025-03-14T16:56:06.187-04:00: You are running this process as the root user, which is not recommended
+         2025-03-14T16:56:06.187-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+         2025-03-14T16:56:06.187-04:00: Soft rlimits for open file descriptors too low
+      ------
+
+      Enterprise test>
+
+      
+   ```
+     
+In this part of the lab we will shutdown MongoDB by using  **db.shutdownServer()**. You must issue the db.shutdownServer() operation against the admin database. 
+
+Enter the following commands  
+
+   ``` bash
+         use admin
+         db.shutdownServer()
+         exit
+   ```
+
+???- example "The following is an example of shutdown [Click to expand me]"
+
+      ```
+      Enterprise test> use admin
+      switched to db admin
+      Enterprise admin> db.shutdownServer()
+      MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
+      Enterprise admin> exit
+      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+
+   
 
 ## Summary
  

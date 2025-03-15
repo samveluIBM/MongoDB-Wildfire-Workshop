@@ -20,7 +20,8 @@ Welcome to our MongoDB wildfire workshop on LinuxONE. Organizations can leverage
 
 * [MongoDB Installation Lab](assets/a.txt)
 * [MongoDB Usage Lab (CRUD)](assets/a.txt)
-* [MongoDB Operations Lab (Backup / Restore, Replication, Sharding)](assets/a.txt)
+* [MongoDB Operations Lab (Backup / Restore, Startup / Shutdown)](assets/a.txt)
+* [MongoDB Advanced Operations Lab (Replication, Sharding)](assets/a.txt)
 
 
 

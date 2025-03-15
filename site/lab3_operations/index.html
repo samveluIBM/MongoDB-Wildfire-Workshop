@@ -489,6 +489,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restore-a-mongodb-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a MongoDB database
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -609,6 +618,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restore-a-mongodb-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a MongoDB database
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -690,9 +708,11 @@ drwxrwxrwt. 5 root root 4096 Mar 13 17:11 ../
 </code></pre></div>
 </details>
 <h4 id="drop-a-mongodb-database">Drop a MongoDB database</h4>
-<p>In this lab we are going to use the <strong>db.dropDatabase()</strong> utility to drop our database "labtest". </p>
-<p>Enter the following command to connect to MongoDB</p>
+<p>In this lab we are going to use the <strong>db.dropDatabase()</strong> utility to drop our database "labtest". 
+First let us connect to <strong>mongosh</strong> and list the databases in the environment by using <strong>show dbs</strong> command</p>
+<p>Enter the following command to connect to MongoDB and list the databases</p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh
+<span class="w">   </span>show<span class="w"> </span>dbs
 </code></pre></div>
 <details class="- example">
 <summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
@@ -704,11 +724,49 @@ local    40.00 KiB
 Enterprise test&gt;
 </code></pre></div>
 </details>
-<p>Now connect to the "labtest" database,drop the database and then list the databases by entering the following series of commands</p>
+<p>Now connect to the "labtest" database, drop that database by <strong>db.dropDatabase()</strong> utility and then list the databases by entering the following series of commands</p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>labtest<span class="p">;</span>
 <span class="w">   </span>db.dropDatabase<span class="o">()</span><span class="p">;</span>
 <span class="w">   </span>show<span class="w"> </span>dbs
 </code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise test&gt; use labtest
+switched to db labtest
+Enterprise labtest&gt; db.dropDatabase();
+{ ok: 1, dropped: &#39;labtest&#39; }
+Enterprise labtest&gt; show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+Enterprise labtest&gt;
+</code></pre></div>
+</details>
+<p>Now let us exit the mongosh shell environment by issuing exit command</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nb">exit</span>
+</code></pre></div>
+<h4 id="restore-a-mongodb-database">Restore a MongoDB database</h4>
+<p>In this part of the lab we are going to use the <strong>mongorestore</strong> utility to restore our deleted lab database "labtest". </p>
+<p>Enter the following command to restore the backup of the labtest database available inside /tmp  directory</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mongorestore<span class="w"> </span>-v<span class="w"> </span>--db<span class="w"> </span>labtest<span class="w">  </span>--drop<span class="w">  </span>/tmp/labtest
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the database dump is restored [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>   [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongorestore -v --db labtest  --drop  /tmp/labtest
+   2025-03-14T14:27:41.092-0400    using write concern: &amp;{majority &lt;nil&gt; 0s}
+   2025-03-14T14:27:41.096-0400    The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+   2025-03-14T14:27:41.096-0400    building a list of collections to restore from /tmp/labtest dir
+   2025-03-14T14:27:41.096-0400    found collection labtest.employee bson to restore to labtest.employee
+   2025-03-14T14:27:41.096-0400    found collection metadata from labtest.employee to restore to labtest.employee
+   2025-03-14T14:27:41.096-0400    reading metadata for labtest.employee from /tmp/labtest/employee.metadata.json
+   2025-03-14T14:27:41.096-0400    creating collection labtest.employee with no metadata
+   2025-03-14T14:27:41.102-0400    restoring labtest.employee from /tmp/labtest/employee.bson
+   2025-03-14T14:27:41.113-0400    finished restoring labtest.employee (2 documents, 0 failures)
+   2025-03-14T14:27:41.113-0400    no indexes to restore for collection labtest.employee
+   2025-03-14T14:27:41.113-0400    2 document(s) restored successfully. 0 document(s) failed to restore.
+   [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
 <h2 id="summary">Summary</h2>
 <p>In this lab we have executed some basic MongoDB commands in a MongoDB deployment 
 using  <strong>mongosh</strong>  shell environment. </p>

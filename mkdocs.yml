@@ -7,6 +7,7 @@ nav:
     - MongoDB Installation: lab1_install.md   
     - MongoDB Usage: lab2_basics.md 
     - MongoDB Operations: lab3_operations.md
+    - MongoDB Advanced Operations: lab4_advanced.md
   - Locally Building docs: localdocbuild.md
  
 # Project Information
