@@ -18,7 +18,7 @@
         <link rel="prev" href="../lab2_basics/">
       
       
-        <link rel="next" href="../localdocbuild/">
+        <link rel="next" href="../lab4_advanced/">
       
       
       <link rel="icon" href="../assets/images/wsc-logo.png">
@@ -498,6 +498,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#shutdown-mongodb-enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shutdown MongoDB Enterprise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-a-mongodb-enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start a MongoDB Enterprise
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -521,6 +539,28 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Advanced Operations
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -627,6 +667,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#shutdown-mongodb-enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shutdown MongoDB Enterprise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-a-mongodb-enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start a MongoDB Enterprise
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -675,7 +733,6 @@ We will be performing some of the following basic operations.</p>
 <li>Restore the database</li>
 <li>Shutdown a MongoDB Enterprise</li>
 <li>Startup a MongoDB Enterprise</li>
-<li>Setup a MongoDB replication cluster </li>
 </ol>
 <h3 id="mongodb-basic-operations-steps">MongoDB basic operations steps</h3>
 <h4 id="backup-a-mongodb-database">Backup a MongoDB database</h4>
@@ -766,6 +823,104 @@ Enterprise labtest&gt;
    2025-03-14T14:27:41.113-0400    2 document(s) restored successfully. 0 document(s) failed to restore.
    [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
 </code></pre></div>
+</details>
+<p>Let us connect back to <strong>mongosh</strong> and list the databases in the environment by using <strong>show dbs</strong> command</p>
+<p>Enter the following command to connect to MongoDB and list the databases and then connect to labtest database and find the documents</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh
+<span class="w">   </span>show<span class="w"> </span>dbs
+<span class="w">   </span>use<span class="w"> </span>labtest
+<span class="w">   </span>db.employee.find<span class="o">()</span>
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the database dump is restored [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise test&gt; show dbs
+admin    40.00 KiB
+config   96.00 KiB
+labtest  40.00 KiB
+local    40.00 KiB
+Enterprise test&gt; use labtest
+switched to db labtest
+Enterprise labtest&gt; db.employee.find()
+[
+{
+   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
+   name: &#39;John Doe&#39;,
+   number: 1000,
+   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
+},
+{
+   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
+   name: &#39;Super Man&#39;,
+   number: 2000
+}
+]
+Enterprise labtest&gt;
+</code></pre></div>
+</details>
+<h4 id="shutdown-mongodb-enterprise">Shutdown MongoDB Enterprise</h4>
+<p>In this part of the lab we are going to shutdown MongoDB by using  <strong>db.shutdownServer()</strong>. You must issue the db.shutdownServer() operation against the admin database. </p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>admin
+<span class="w">   </span>db.shutdownServer<span class="o">()</span>
+<span class="w">   </span><span class="nb">exit</span>
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise labtest&gt; use admin
+switched to db admin
+Enterprise admin&gt; db.shutdownServer()
+MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
+Enterprise admin&gt; exit
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
+<h4 id="start-a-mongodb-enterprise">Start a MongoDB Enterprise</h4>
+<p>In this part of the lab we are going to start MongoDB Enterprise. 
+We need to specify the following parameters: Data, log file and specify the fork option to start the mongod in the background. Then we will connect to mongosh shell.</p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mongod<span class="w">  </span>--dbpath<span class="w"> </span>/var/lib/mongodb<span class="w"> </span>--logpath<span class="w"> </span>/var/log/mongodb/mongod.log<span class="w"> </span>--fork<span class="w"> </span>--bind_ip_all
+<span class="w">   </span>mongosh
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
+<p>```
+  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
+  about to fork child process, waiting until server is ready for connections.
+  forked process: 112970
+  child process started successfully, parent exiting
+  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#mongosh
+  Current Mongosh Log ID: 67d49ba95b1ee08487a63a57
+  Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
+  Using MongoDB:          7.0.17
+  Using Mongosh:          2.4.2</p>
+<p>For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/</p>
+<hr />
+<div class="highlight"><pre><span></span><code> The server generated these startup warnings when booting
+ 2025-03-14T16:56:05.980-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+ 2025-03-14T16:56:06.187-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+ 2025-03-14T16:56:06.187-04:00: You are running this process as the root user, which is not recommended
+ 2025-03-14T16:56:06.187-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+ 2025-03-14T16:56:06.187-04:00: Soft rlimits for open file descriptors too low
+</code></pre></div>
+<hr />
+<p>Enterprise test&gt;</p>
+</details>
+<p>```</p>
+<p>In this part of the lab we will shutdown MongoDB by using  <strong>db.shutdownServer()</strong>. You must issue the db.shutdownServer() operation against the admin database. </p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span>use<span class="w"> </span>admin
+<span class="w">      </span>db.shutdownServer<span class="o">()</span>
+<span class="w">      </span><span class="nb">exit</span>
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example of shutdown [Click to expand me]</summary>
+<p>```
+  Enterprise test&gt; use admin
+  switched to db admin
+  Enterprise admin&gt; db.shutdownServer()
+  MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
+  Enterprise admin&gt; exit
+  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#</p>
 </details>
 <h2 id="summary">Summary</h2>
 <p>In this lab we have executed some basic MongoDB commands in a MongoDB deployment 

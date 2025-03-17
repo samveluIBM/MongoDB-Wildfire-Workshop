@@ -100,4 +100,4 @@
     - name: Congratulations!
       tags: debug, final
       ansible.builtin.debug:
-        msg: "MongoDB installation complete."
+        msg: "MongoDB V7 installation complete."

@@ -1,0 +1,103 @@
+---
+- name: Install MongoDB on a Linux Guest.
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: Create repo file for mongodb-enterprise
+      tags: repo
+      ansible.builtin.template:
+        src: mongodb-enterprise-8.0.repo.j2
+        dest: "{{ rep_path }}/mongodb-enterprise-8.0.repo"
+        mode: "640"
+
+    - name: Install  mongodb-enterprise.
+      tags: pkg
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - mongodb-enterprise
+        - libselinux-utils
+        - policycoreutils-python-utils
+
+    - name: Set SELinux to Permissive mode.
+      tags: selinux
+      ansible.builtin.command: setenforce 0
+
+    - name: Disable SELinux permanently in configuration.
+      tags: selinux
+      ansible.builtin.lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: 'SELINUX=disabled'
+
+    - name: Ensure db and log files exist and are owned by mongod user.
+      tags: db, log, files
+      ansible.builtin.file:
+        state: "{{ item.state }}"
+        path: "{{ item.path }}"
+        owner: mongod
+        group: mongod
+        recurse: "{{ item.recurse }}"
+      loop:
+        - { path: "{{ db_path }}", state: directory, recurse: true }
+        - { path: "{{ log_file }}", state: touch, recurse: false }
+
+    - name: Change db and/or log file paths.
+      tags: db, log, files
+      ansible.builtin.lineinfile:
+        line: "  {{ item.key }}: {{ item.value }}"
+        path: /etc/mongod.conf
+        search_string: "{{ item.key }}"
+      loop:
+        - { key: dbPath, value: "{{ db_path }}" }
+        - { key: path, value: "{{ log_file }}" }
+
+    - name: Start mongod service.
+      tags: start, service
+      ansible.builtin.service:
+        name: mongod
+        state: restarted
+        enabled: true
+
+    - name: Check mongod status.
+      tags: check, service
+      ansible.builtin.shell: "systemctl status mongod"
+      register: mongod_check
+      failed_when: not 'active (running)' in mongod_check.stdout
+
+    - name: Print mongod status.
+      tags: check, service
+      ansible.builtin.debug:
+        msg: "{{ mongod_check.stdout }}"
+
+    - name: Check mongod version.
+      tags: check, version
+      ansible.builtin.shell: mongod --version
+      register: mongod_version
+
+    - name: Print mongod version.
+      tags: check, version
+      ansible.builtin.debug:
+        msg: mongod_version.stdout
+
+    - name: Set bindIP to 0.0.0.0 in mongod.conf
+      tags: bindip
+      ansible.builtin.lineinfile:
+        path: /etc/mongod.conf
+        line: "  bindIp: 0.0.0.0"
+        search_string: "bindIp"
+        backup: true
+
+    - name: Verify MongoDB Enterprise Edition installed successfully.
+      tags: verify
+      ansible.builtin.shell: "more {{ log_file }} | grep 'Waiting for connections'"
+      register: verify_mongodb
+      failed_when: "'Waiting for connections' not in verify_mongodb.stdout"
+
+    - name: Congratulations!
+      tags: debug, final
+      ansible.builtin.debug:
+        msg: "MongoDB V8 installation complete."
