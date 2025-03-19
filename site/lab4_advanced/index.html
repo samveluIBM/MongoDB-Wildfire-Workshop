@@ -360,28 +360,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../lab1_7_install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB V7 Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../lab1_8_install/" class="md-nav__link">
         
   
@@ -1231,8 +1209,7 @@ Enterprise rs0 [direct: primary] test&gt;
 <p>Now let us check if the replication is happening correctly.</p>
 <p>In the PRIMARY instance, insert a document to our MongoDB Database labtest </p>
 <p>Enter the following commands  </p>
-<div class="highlight"><pre><span></span><code>   mongosh
-   show dbs
+<div class="highlight"><pre><span></span><code>   show dbs
    use labtest 
       db.employee.insertOne(
    {

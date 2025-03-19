@@ -12,13 +12,13 @@
         <meta name="author" content="Sam Amsavelu">
       
       
-        <link rel="canonical" href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/lab3_operations/">
+        <link rel="canonical" href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/lab1_8_install/">
       
       
-        <link rel="prev" href="../lab2_basics/">
+        <link rel="prev" href="../onpremaccess/">
       
       
-        <link rel="next" href="../lab4_advanced/">
+        <link rel="next" href="../lab2_basics/">
       
       
       <link rel="icon" href="../assets/images/wsc-logo.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>MongoDB Operations - MongoDB Wildfire Workshop on LinuxONE</title>
+        <title>MongoDB V8 Installation - MongoDB Wildfire Workshop on LinuxONE</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mongodb-basic-operations-lab" class="md-skip">
+        <a href="#mongodb-installation" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MongoDB Operations
+              MongoDB V8 Installation
             
           </span>
         </div>
@@ -357,50 +357,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab1_8_install/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB V8 Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab2_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Usage
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -417,7 +373,7 @@
           
   
   <span class="md-ellipsis">
-    MongoDB Operations
+    MongoDB V8 Installation
     
   </span>
   
@@ -429,7 +385,7 @@
         
   
   <span class="md-ellipsis">
-    MongoDB Operations
+    MongoDB V8 Installation
     
   </span>
   
@@ -462,55 +418,70 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mongodb-basic-operations-steps" class="md-nav__link">
+  <a href="#mongodb-installation-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      MongoDB basic operations steps
+      MongoDB installation steps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MongoDB basic operations steps">
+    <nav class="md-nav" aria-label="MongoDB installation steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backup-a-mongodb-database" class="md-nav__link">
+  <a href="#clone-the-mongodb-git-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Backup a MongoDB database
+      Clone the mongoDB git repository
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#drop-a-mongodb-database" class="md-nav__link">
+  <a href="#run-the-setup-script" class="md-nav__link">
     <span class="md-ellipsis">
-      Drop a MongoDB database
+      Run the setup script
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#restore-a-mongodb-database" class="md-nav__link">
+  <a href="#run-the-ansible-playbook" class="md-nav__link">
     <span class="md-ellipsis">
-      Restore a MongoDB database
+      Run the ansible playbook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-uninstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB Uninstallation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB Uninstallation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uninstall-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall MongoDB
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#shutdown-mongodb-enterprise" class="md-nav__link">
+  <a href="#install-mongodb" class="md-nav__link">
     <span class="md-ellipsis">
-      Shutdown MongoDB Enterprise
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-a-mongodb-enterprise" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start a MongoDB Enterprise
+      Install MongoDB
     </span>
   </a>
   
@@ -539,6 +510,50 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Operations
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -653,55 +668,70 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mongodb-basic-operations-steps" class="md-nav__link">
+  <a href="#mongodb-installation-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      MongoDB basic operations steps
+      MongoDB installation steps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MongoDB basic operations steps">
+    <nav class="md-nav" aria-label="MongoDB installation steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backup-a-mongodb-database" class="md-nav__link">
+  <a href="#clone-the-mongodb-git-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Backup a MongoDB database
+      Clone the mongoDB git repository
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#drop-a-mongodb-database" class="md-nav__link">
+  <a href="#run-the-setup-script" class="md-nav__link">
     <span class="md-ellipsis">
-      Drop a MongoDB database
+      Run the setup script
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#restore-a-mongodb-database" class="md-nav__link">
+  <a href="#run-the-ansible-playbook" class="md-nav__link">
     <span class="md-ellipsis">
-      Restore a MongoDB database
+      Run the ansible playbook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-uninstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB Uninstallation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB Uninstallation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uninstall-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall MongoDB
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#shutdown-mongodb-enterprise" class="md-nav__link">
+  <a href="#install-mongodb" class="md-nav__link">
     <span class="md-ellipsis">
-      Shutdown MongoDB Enterprise
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-a-mongodb-enterprise" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start a MongoDB Enterprise
+      Install MongoDB
     </span>
   </a>
   
@@ -745,209 +775,325 @@
   
 
 
-<h1 id="mongodb-basic-operations-lab">MongoDB basic operations lab</h1>
+<h1 id="mongodb-installation">MongoDB installation</h1>
 <h2 id="overview">Overview</h2>
-<p>The objective of this lab is to execute some basic MongoDB operations in a MongoDB deployment.<br />
-We will be performing some of the following basic operations.</p>
+<p>We will be using the Ansible playbooks to install MongoDB in the lab environment by following the steps below.</p>
 <ol>
-<li>Backup a MongoDB database</li>
-<li>Drop a database</li>
-<li>Restore the database</li>
-<li>Shutdown a MongoDB Enterprise</li>
-<li>Startup a MongoDB Enterprise</li>
+<li>Clone the MongoDB git repository</li>
+<li>Run the setup script </li>
+<li>Run the ansible playbook </li>
 </ol>
-<h3 id="mongodb-basic-operations-steps">MongoDB basic operations steps</h3>
-<h4 id="backup-a-mongodb-database">Backup a MongoDB database</h4>
+<h3 id="mongodb-installation-steps">MongoDB installation steps</h3>
+<h4 id="clone-the-mongodb-git-repository">Clone the mongoDB git repository</h4>
 <p>Make sure you are connected to the Linux guest from the previous step.</p>
-<p>In this lab we are going to use the <strong>mongodump</strong> utility to backup our lab database "labtest". </p>
-<p>Enter the following command to save the backup of the labtest database inside /tmp  directory</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongodump<span class="w"> </span>-v<span class="w"> </span>--db<span class="w"> </span>labtest<span class="w"> </span>--out<span class="w"> </span>/tmp
+<details class="- example">
+<summary>The following is an example where the terminal will show that you are connected to the Linux guest [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>login as: cecuser
+Pre-authentication banner message from server:
+|
+| ______________________________________________________________________
+|
+|                     Welcome to IBM Technology Zone
+| ______________________________________________________________________
+|
+|
+| IBM&#39;s internal systems must only be used for conducting IBM&#39;s business
+| or for purposes authorized by IBM management.  Use is subject to audit
+| at any time by IBM management.
+|
+| Unauthorized access will be investigated and penalties will be pursued
+| in conformance with applicable laws and regulations. If you are not an
+| authorized user disconnect now.
+|
+|
+End of banner message from server
+cecuser@129.40.60.161&#39;s password:
+
+______________________________________________________________________
+
+                  Welcome to IBM Technology Zone
+______________________________________________________________________
+
+
+IBM&#39;s internal systems must only be used for conducting IBM&#39;s business
+or for purposes authorized by IBM management.  Use is subject to audit
+at any time by IBM management.
+
+Unauthorized access will be investigated and penalties will be pursued
+in conformance with applicable laws and regulations. If you are not an
+authorized user disconnect now.
+______________________________________________________________________
+
+IaaS Red Hat Enterprise Linux 8.10
+
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+Last login: Thu Mar 13 10:18:51 2025 from 9.19.184.79
+[cecuser@p1243-zvm1 ~]$
+</code></pre></div>
+</details>
+<p>Enter the following Linux commands to switch to <strong>super user</strong> for installation and then change the directory to a temporary working directory <strong>/tmp</strong> .</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>sudo<span class="w"> </span>-i<span class="w"> </span>
+<span class="w">   </span><span class="nb">cd</span><span class="w"> </span>/tmp
 </code></pre></div>
 <details class="- example">
-<summary>The following is an example where the terminal will show that the database dump is taken [click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]# mongodump -v --db labtest --out /tmp
-2025-03-13T17:05:10.012-0400    dumping up to 1 collections in parallel
-2025-03-13T17:05:10.020-0400    writing labtest.employee to /tmp/labtest/employee.bson
-2025-03-13T17:05:10.022-0400    done dumping labtest.employee (2 documents)
+<summary>The following is an example where the terminal will show that you are connected to the Linux terminal as “root” and the working directory is tmp [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[cecuser@p1243-zvm1 /]$    sudo -i
+[root@p1243-zvm1 ~]#    cd /tmp
+[root@p1243-zvm1 tmp]#
+</code></pre></div>
+</details>
+<p>We have created an Ansible playbook repository to install MongoDB on a Red Hat Linux guest and clone that repository using the following command.</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/samveluIBM/MongoDB-Wildfire-Workshop
+</code></pre></div>
+<details class="- example">
+<summary>The following example shows the output of succesful cloning of the repository [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 tmp]#    git clone https://github.com/samveluIBM/MongoDB-Wildfire-Workshop
+Cloning into &#39;MongoDB-Wildfire-Workshop&#39;...
+remote: Enumerating objects: 20, done.
+remote: Counting objects: 100% (20/20), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 20 (delta 1), reused 3 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (20/20), 4.99 KiB | 4.99 MiB/s, done.
+Resolving deltas: 100% (1/1), done.
+[root@p1243-zvm1 tmp]#
+</code></pre></div>
+</details>
+<h4 id="run-the-setup-script">Run the setup script</h4>
+<p>This step will install the python and ansibles to use ansible playbooks to install MongoDB on the Linux guest. 
+Change to the cloned directory and then run the <strong>setup</strong> script.
+Use the following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">cd</span><span class="w"> </span>MongoDB-Wildfire-Workshop/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>./setup.sh
+</code></pre></div>
+<details class="- example">
+<summary>The following example shows the output of succesful execution of setup.sh script [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Installed products updated.
+
+Installed:
+ansible-9.2.0-1.el8.noarch
+ansible-core-2.16.3-2.el8.s390x
+python3-jmespath-0.9.0-11.el8.noarch
+python3.12-3.12.8-1.el8_10.s390x
+python3.12-cffi-1.16.0-2.el8.s390x
+python3.12-cryptography-41.0.7-1.el8.s390x
+python3.12-libs-3.12.8-1.el8_10.s390x
+python3.12-pip-wheel-23.2.1-4.el8.noarch
+python3.12-ply-3.11-2.el8.noarch
+python3.12-pycparser-2.20-2.el8.noarch
+python3.12-pyyaml-6.0.1-2.el8.s390x
+python39-3.9.20-1.module+el8.10.0+22342+478c159e.s390x
+python39-libs-3.9.20-1.module+el8.10.0+22342+478c159e.s390x
+python39-pip-20.2.4-9.module+el8.10.0+21329+8d76b841.noarch
+python39-pip-wheel-20.2.4-9.module+el8.10.0+21329+8d76b841.noarch
+python39-setuptools-50.3.2-6.module+el8.10.0+22183+c898c0c1.noarch
+python39-setuptools-wheel-50.3.2-6.module+el8.10.0+22183+c898c0c1.noarch
+sshpass-1.09-4.el8.s390x
+
+Complete!
 [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
 </code></pre></div>
 </details>
-<p>Enter the following command to list the /tmp/labtest directory </p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>ls<span class="w"> </span>-alF<span class="w"> </span>/tmp/labtest/
+<h4 id="run-the-ansible-playbook">Run the ansible playbook</h4>
+<p>In this step we will run the ansible playbook to install MongoDB. Use the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>ansible-playbook<span class="w"> </span>mongodb8Install.yml<span class="w"> </span>
 </code></pre></div>
 <details class="- example">
-<summary>The following is an example where the terminal will show that the database dump is taken inside /tmp/labtest directory [click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]# ls -alF /tmp/labtest/
-total 16
-drwxr-xr-x. 2 root root 4096 Mar 13 17:05 ./
-drwxrwxrwt. 5 root root 4096 Mar 13 17:11 ../
--rw-r--r--. 1 root root  128 Mar 13 17:05 employee.bson
--rw-r--r--. 1 root root  175 Mar 13 17:05 employee.metadata.json
-[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
-</code></pre></div>
-</details>
-<h4 id="drop-a-mongodb-database">Drop a MongoDB database</h4>
-<p>In this lab we are going to use the <strong>db.dropDatabase()</strong> utility to drop our database "labtest". 
-First let us connect to <strong>mongosh</strong> and list the databases in the environment by using <strong>show dbs</strong> command</p>
-<p>Enter the following commands to connect to MongoDB and list the databases</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh<span class="p">;</span>
-<span class="w">   </span>show<span class="w"> </span>dbs
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>Enterprise test&gt; show dbs
-admin    40.00 KiB
-config   72.00 KiB
-labtest  72.00 KiB
-local    40.00 KiB
-Enterprise test&gt;
-</code></pre></div>
-</details>
-<p>Now connect to the "labtest" database, drop that database by <strong>db.dropDatabase()</strong> utility and then list the databases by entering the following series of commands</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>labtest
-<span class="w">   </span>db.dropDatabase<span class="o">()</span>
-<span class="w">   </span>show<span class="w"> </span>dbs
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that there are only three databases in the deployment [Click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>Enterprise test&gt; use labtest
-switched to db labtest
-Enterprise labtest&gt; db.dropDatabase();
-{ ok: 1, dropped: &#39;labtest&#39; }
-Enterprise labtest&gt; show dbs
-admin    40.00 KiB
-config  108.00 KiB
-local    40.00 KiB
-Enterprise labtest&gt;
-</code></pre></div>
-</details>
-<p>Now let us exit the mongosh shell environment by issuing exit command</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nb">exit</span>
-</code></pre></div>
-<h4 id="restore-a-mongodb-database">Restore a MongoDB database</h4>
-<p>In this part of the lab we are going to use the <strong>mongorestore</strong> utility to restore our deleted lab database "labtest". </p>
-<p>Enter the following command to restore the backup of the labtest database available inside /tmp  directory</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongorestore<span class="w"> </span>-v<span class="w"> </span>--db<span class="w"> </span>labtest<span class="w">  </span>--drop<span class="w">  </span>/tmp/labtest
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that the database dump is restored [click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>   [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongorestore -v --db labtest  --drop  /tmp/labtest
-   2025-03-14T14:27:41.092-0400    using write concern: &amp;{majority &lt;nil&gt; 0s}
-   2025-03-14T14:27:41.096-0400    The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
-   2025-03-14T14:27:41.096-0400    building a list of collections to restore from /tmp/labtest dir
-   2025-03-14T14:27:41.096-0400    found collection labtest.employee bson to restore to labtest.employee
-   2025-03-14T14:27:41.096-0400    found collection metadata from labtest.employee to restore to labtest.employee
-   2025-03-14T14:27:41.096-0400    reading metadata for labtest.employee from /tmp/labtest/employee.metadata.json
-   2025-03-14T14:27:41.096-0400    creating collection labtest.employee with no metadata
-   2025-03-14T14:27:41.102-0400    restoring labtest.employee from /tmp/labtest/employee.bson
-   2025-03-14T14:27:41.113-0400    finished restoring labtest.employee (2 documents, 0 failures)
-   2025-03-14T14:27:41.113-0400    no indexes to restore for collection labtest.employee
-   2025-03-14T14:27:41.113-0400    2 document(s) restored successfully. 0 document(s) failed to restore.
-   [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
-</code></pre></div>
-</details>
-<p>Let us connect back to <strong>mongosh</strong> and list the databases in the environment by using <strong>show dbs</strong> command</p>
-<p>Enter the following command to connect to MongoDB and list the databases and then connect to labtest database and find the documents</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh
-<span class="w">   </span>show<span class="w"> </span>dbs
-<span class="w">   </span>use<span class="w"> </span>labtest
-<span class="w">   </span>db.employee.find<span class="o">()</span>
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that the database dump is restored [click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>Enterprise test&gt; show dbs
-admin    40.00 KiB
-config   96.00 KiB
-labtest  40.00 KiB
-local    40.00 KiB
-Enterprise test&gt; use labtest
-switched to db labtest
-Enterprise labtest&gt; db.employee.find()
-[
-{
-   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
-   name: &#39;John Doe&#39;,
-   number: 1000,
-   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
-},
-{
-   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
-   name: &#39;Super Man&#39;,
-   number: 2000
-}
-]
-Enterprise labtest&gt;
-</code></pre></div>
-</details>
-<h4 id="shutdown-mongodb-enterprise">Shutdown MongoDB Enterprise</h4>
-<p>In this part of the lab we are going to shutdown MongoDB by using  <strong>db.shutdownServer()</strong>. You must issue the db.shutdownServer() operation against the admin database. </p>
-<p>Enter the following commands  </p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>admin
-<span class="w">   </span>db.shutdownServer<span class="o">()</span>
-<span class="w">   </span><span class="nb">exit</span>
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>Enterprise labtest&gt; use admin
-switched to db admin
-Enterprise admin&gt; db.shutdownServer()
-MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
-Enterprise admin&gt; exit
-[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
-</code></pre></div>
-</details>
-<h4 id="start-a-mongodb-enterprise">Start a MongoDB Enterprise</h4>
-<p>In this part of the lab we are going to start MongoDB Enterprise. 
-We need to specify the following parameters: Data, log file and specify the fork option to start the mongod in the background. Then we will connect to mongosh shell.</p>
-<p>Enter the following commands  </p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongod<span class="w">  </span>--dbpath<span class="w"> </span>/var/lib/mongodb<span class="w"> </span>--logpath<span class="w"> </span>/var/log/mongodb/mongod.log<span class="w"> </span>--fork<span class="w"> </span>--bind_ip_all
-<span class="w">   </span>mongosh
-</code></pre></div>
-<details class="- example">
-<summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
-about to fork child process, waiting until server is ready for connections.
-forked process: 112970
-child process started successfully, parent exiting
-[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#mongosh
-Current Mongosh Log ID: 67d49ba95b1ee08487a63a57
-Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
-Using MongoDB:          7.0.17
-Using Mongosh:          2.4.2
+<summary>The following example shows the output of succesful MongoDB installtion [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@zdblab05 zmongodb]# ansible-playbook mongodbInstall.yml
 
-For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+PLAY [Install MongoDB on a Linux Guest.] ***********************************************************
 
-------
-   The server generated these startup warnings when booting
-   2025-03-14T16:56:05.980-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2025-03-14T16:56:06.187-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2025-03-14T16:56:06.187-04:00: You are running this process as the root user, which is not recommended
-   2025-03-14T16:56:06.187-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
-   2025-03-14T16:56:06.187-04:00: Soft rlimits for open file descriptors too low
-------
+TASK [Gathering Facts] *****************************************************************************
+ok: [127.0.0.1]
 
-Enterprise test&gt;
+TASK [Create repo file for mongodb-enterprise] *****************************************************
+ok: [127.0.0.1]
+
+TASK [Install  mongodb-enterprise.] ****************************************************************
+changed: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;mongodb-enterprise&#39;, &#39;when&#39;: True})
+ok: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;libselinux-utils&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39; or log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+ok: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;policycoreutils-python-utils&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39; or log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+
+TASK [Set SELinux to Permissive mode.] *************************************************************
+skipping: [127.0.0.1]
+
+TASK [Disable SELinux permanently in configuration.] ***********************************************
+skipping: [127.0.0.1]
+
+TASK [Ensure db and log files exist and are owned by mongod user.] *********************************
+changed: [127.0.0.1] =&gt; (item={&#39;path&#39;: &#39;/var/lib/mongodb&#39;, &#39;state&#39;: &#39;directory&#39;, &#39;recurse&#39;: True})
+changed: [127.0.0.1] =&gt; (item={&#39;path&#39;: &#39;/var/log/mongodb/mongod.log&#39;, &#39;state&#39;: &#39;touch&#39;, &#39;recurse&#39;: False})
+
+TASK [Change db and/or log file paths.] ************************************************************
+changed: [127.0.0.1] =&gt; (item={&#39;key&#39;: &#39;dbPath&#39;, &#39;value&#39;: &#39;/var/lib/mongodb&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39;&quot;})
+ok: [127.0.0.1] =&gt; (item={&#39;key&#39;: &#39;path&#39;, &#39;value&#39;: &#39;/var/log/mongodb/mongod.log&#39;, &#39;when&#39;: &quot;log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+
+TASK [Start mongod service.] ***********************************************************************
+changed: [127.0.0.1]
+
+TASK [Check mongod status.] ************************************************************************
+changed: [127.0.0.1]
+
+TASK [Print mongod status.] ************************************************************************
+ok: [127.0.0.1] =&gt;
+msg: |-
+● mongod.service - MongoDB Database Server
+ Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; vendor preset: disabled)
+ Active: active (running) since Mon 2025-03-10 21:51:38 UTC; 288ms ago
+   Docs: https://docs.mongodb.org/manual
+Main PID: 490438 (mongod)
+ Memory: 70.3M
+ CGroup: /system.slice/mongod.service
+         └─490438 /usr/bin/mongod -f /etc/mongod.conf
+
+Mar 10 21:51:38 zdblab05 systemd[1]: Started MongoDB Database Server.
+Mar 10 21:51:38 zdblab05 mongod[490438]: {&quot;t&quot;:{&quot;$date&quot;:&quot;2025-03-10T21:51:38.431Z&quot;},&quot;s&quot;:&quot;I&quot;,  &quot;c&quot;:&quot;CONTROL&quot;,  &quot;id&quot;:7484500, &quot;ctx&quot;:&quot;main&quot;,&quot;msg&quot;:&quot;Environment variable MONGODB_CONFIG_OVERRIDE_NOFORK == 1, overriding \&quot;processManagement.fork\&quot; to false&quot;}
+
+TASK [Check mongod version.] ***********************************************************************
+changed: [127.0.0.1]
+
+TASK [Print mongod version.] ***********************************************************************
+ok: [127.0.0.1] =&gt;
+msg: mongod_version.stdout
+
+TASK [Set bindIP to 0.0.0.0 in mongod.conf] ********************************************************
+changed: [127.0.0.1]
+
+TASK [Verify MongoDB Enterprise Edition installed successfully.] ***********************************
+changed: [127.0.0.1]
+
+TASK [Congratulations!] ****************************************************************************
+ok: [127.0.0.1] =&gt;
+msg: MongoDB installation complete.
+
+PLAY RECAP *****************************************************************************************
+127.0.0.1                  : ok=13   changed=8    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+[root@zdblab05 zmongodb]#
 </code></pre></div>
 </details>
-<p>In this part of the lab we will shutdown MongoDB by using  <strong>db.shutdownServer()</strong>. You must issue the db.shutdownServer() operation against the admin database. </p>
-<p>Enter the following commands  </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span>use<span class="w"> </span>admin
-<span class="w">      </span>db.shutdownServer<span class="o">()</span>
-<span class="w">      </span><span class="nb">exit</span>
+<h3 id="mongodb-uninstallation">MongoDB Uninstallation</h3>
+<h4 id="uninstall-mongodb">Uninstall MongoDB</h4>
+<p>Run the ansible playbook to uninstall mongoDB. Use the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>ansible-playbook<span class="w"> </span>mongodbUnInstall.yml<span class="w"> </span>
 </code></pre></div>
 <details class="- example">
-<summary>The following is an example of shutdown [Click to expand me]</summary>
-<p>```
-  Enterprise test&gt; use admin
-  switched to db admin
-  Enterprise admin&gt; db.shutdownServer()
-  MongoNetworkError: connection 4 to 127.0.0.1:27017 closed
-  Enterprise admin&gt; exit
-  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#</p>
+<summary>The following example shows the output of succesful MongoDB uninstalltion [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@zdblab05 zmongodb]# ansible-playbook mongodbUnInstall.yml
+
+PLAY [UnInstall MongoDB on a Linux Guest.] *********************************************************
+
+TASK [Gathering Facts] *****************************************************************************
+ok: [127.0.0.1]
+
+TASK [Gather info about installed  services.] ******************************************************
+ok: [127.0.0.1]
+
+TASK [Stop mongod service.] ************************************************************************
+changed: [127.0.0.1]
+
+TASK [Uninstall MongoDB.] **************************************************************************
+changed: [127.0.0.1]
+
+TASK [Remove data and log directories] *************************************************************
+ok: [127.0.0.1] =&gt; (item=/var/log/mongodb/mongod.log)
+changed: [127.0.0.1] =&gt; (item=/var/lib/mongodb)
+
+TASK [Done.] ***************************************************************************************
+ok: [127.0.0.1] =&gt;
+msg: MongoDB has been uninstalled successfully.
+
+PLAY RECAP *****************************************************************************************
+127.0.0.1                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[root@zdblab05 zmongodb]#
+</code></pre></div>
+</details>
+<h4 id="install-mongodb">Install MongoDB</h4>
+<p>In this step we will run the ansible playbook to install MongoDB back. Use the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>ansible-playbook<span class="w"> </span>mongodb8Install.yml<span class="w"> </span>
+</code></pre></div>
+<details class="- example">
+<summary>The following example shows the output of succesful MongoDB installtion [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@zdblab05 zmongodb]# ansible-playbook mongodbInstall.yml
+
+PLAY [Install MongoDB on a Linux Guest.] ***********************************************************
+
+TASK [Gathering Facts] *****************************************************************************
+ok: [127.0.0.1]
+
+TASK [Create repo file for mongodb-enterprise] *****************************************************
+ok: [127.0.0.1]
+
+TASK [Install  mongodb-enterprise.] ****************************************************************
+changed: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;mongodb-enterprise&#39;, &#39;when&#39;: True})
+ok: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;libselinux-utils&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39; or log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+ok: [127.0.0.1] =&gt; (item={&#39;pkg&#39;: &#39;policycoreutils-python-utils&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39; or log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+
+TASK [Set SELinux to Permissive mode.] *************************************************************
+skipping: [127.0.0.1]
+
+TASK [Disable SELinux permanently in configuration.] ***********************************************
+skipping: [127.0.0.1]
+
+TASK [Ensure db and log files exist and are owned by mongod user.] *********************************
+changed: [127.0.0.1] =&gt; (item={&#39;path&#39;: &#39;/var/lib/mongodb&#39;, &#39;state&#39;: &#39;directory&#39;, &#39;recurse&#39;: True})
+changed: [127.0.0.1] =&gt; (item={&#39;path&#39;: &#39;/var/log/mongodb/mongod.log&#39;, &#39;state&#39;: &#39;touch&#39;, &#39;recurse&#39;: False})
+
+TASK [Change db and/or log file paths.] ************************************************************
+changed: [127.0.0.1] =&gt; (item={&#39;key&#39;: &#39;dbPath&#39;, &#39;value&#39;: &#39;/var/lib/mongodb&#39;, &#39;when&#39;: &quot;db_path != &#39;/var/lib/mongodb&#39;&quot;})
+ok: [127.0.0.1] =&gt; (item={&#39;key&#39;: &#39;path&#39;, &#39;value&#39;: &#39;/var/log/mongodb/mongod.log&#39;, &#39;when&#39;: &quot;log_file != &#39;/var/log/mongodb/mongod.log&#39;&quot;})
+
+TASK [Start mongod service.] ***********************************************************************
+changed: [127.0.0.1]
+
+TASK [Check mongod status.] ************************************************************************
+changed: [127.0.0.1]
+
+TASK [Print mongod status.] ************************************************************************
+ok: [127.0.0.1] =&gt;
+msg: |-
+● mongod.service - MongoDB Database Server
+ Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; vendor preset: disabled)
+ Active: active (running) since Mon 2025-03-10 21:51:38 UTC; 288ms ago
+   Docs: https://docs.mongodb.org/manual
+Main PID: 490438 (mongod)
+ Memory: 70.3M
+ CGroup: /system.slice/mongod.service
+         └─490438 /usr/bin/mongod -f /etc/mongod.conf
+
+Mar 10 21:51:38 zdblab05 systemd[1]: Started MongoDB Database Server.
+Mar 10 21:51:38 zdblab05 mongod[490438]: {&quot;t&quot;:{&quot;$date&quot;:&quot;2025-03-10T21:51:38.431Z&quot;},&quot;s&quot;:&quot;I&quot;,  &quot;c&quot;:&quot;CONTROL&quot;,  &quot;id&quot;:7484500, &quot;ctx&quot;:&quot;main&quot;,&quot;msg&quot;:&quot;Environment variable MONGODB_CONFIG_OVERRIDE_NOFORK == 1, overriding \&quot;processManagement.fork\&quot; to false&quot;}
+
+TASK [Check mongod version.] ***********************************************************************
+changed: [127.0.0.1]
+
+TASK [Print mongod version.] ***********************************************************************
+ok: [127.0.0.1] =&gt;
+msg: mongod_version.stdout
+
+TASK [Set bindIP to 0.0.0.0 in mongod.conf] ********************************************************
+changed: [127.0.0.1]
+
+TASK [Verify MongoDB Enterprise Edition installed successfully.] ***********************************
+changed: [127.0.0.1]
+
+TASK [Congratulations!] ****************************************************************************
+ok: [127.0.0.1] =&gt;
+msg: MongoDB installation complete.
+
+PLAY RECAP *****************************************************************************************
+127.0.0.1                  : ok=13   changed=8    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+[root@zdblab05 zmongodb]#
+</code></pre></div>
 </details>
 <h2 id="summary">Summary</h2>
-<p>In this lab we have executed some basic MongoDB commands in a MongoDB deployment 
-using  <strong>mongosh</strong>  shell environment. </p>
+<p>In this lab we used Ansible playbooks to install MongoDB in the lab environment.     </p>
 
 
 

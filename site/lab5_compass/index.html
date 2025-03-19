@@ -12,13 +12,13 @@
         <meta name="author" content="Sam Amsavelu">
       
       
-        <link rel="canonical" href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/lab3_operations/">
+        <link rel="canonical" href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/lab5_compass/">
       
       
-        <link rel="prev" href="../lab2_basics/">
+        <link rel="prev" href="../lab4_advanced/">
       
       
-        <link rel="next" href="../lab4_advanced/">
+        <link rel="next" href="../localdocbuild/">
       
       
       <link rel="icon" href="../assets/images/wsc-logo.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>MongoDB Operations - MongoDB Wildfire Workshop on LinuxONE</title>
+        <title>MongoDB Compass - MongoDB Wildfire Workshop on LinuxONE</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mongodb-basic-operations-lab" class="md-skip">
+        <a href="#mongodb-compass-basics-lab" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MongoDB Operations
+              MongoDB Compass
             
           </span>
         </div>
@@ -401,6 +401,50 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Advanced Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -417,7 +461,7 @@
           
   
   <span class="md-ellipsis">
-    MongoDB Operations
+    MongoDB Compass
     
   </span>
   
@@ -429,7 +473,7 @@
         
   
   <span class="md-ellipsis">
-    MongoDB Operations
+    MongoDB Compass
     
   </span>
   
@@ -462,19 +506,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mongodb-basic-operations-steps" class="md-nav__link">
+  <a href="#mongodb-compass-basics-lab-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      MongoDB basic operations steps
+      MongoDB Compass basics lab steps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MongoDB basic operations steps">
+    <nav class="md-nav" aria-label="MongoDB Compass basics lab steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backup-a-mongodb-database" class="md-nav__link">
+  <a href="#using-compass-make-a-connection-to-your-mongodb-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Backup a MongoDB database
+      Using Compass make a connection to your MongoDB deployment
     </span>
   </a>
   
@@ -539,50 +583,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab4_advanced/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Advanced Operations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab5_compass/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Compass
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -653,19 +653,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mongodb-basic-operations-steps" class="md-nav__link">
+  <a href="#mongodb-compass-basics-lab-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      MongoDB basic operations steps
+      MongoDB Compass basics lab steps
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MongoDB basic operations steps">
+    <nav class="md-nav" aria-label="MongoDB Compass basics lab steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backup-a-mongodb-database" class="md-nav__link">
+  <a href="#using-compass-make-a-connection-to-your-mongodb-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Backup a MongoDB database
+      Using Compass make a connection to your MongoDB deployment
     </span>
   </a>
   
@@ -745,22 +745,29 @@
   
 
 
-<h1 id="mongodb-basic-operations-lab">MongoDB basic operations lab</h1>
+<h1 id="mongodb-compass-basics-lab">MongoDB Compass Basics lab</h1>
 <h2 id="overview">Overview</h2>
-<p>The objective of this lab is to execute some basic MongoDB operations in a MongoDB deployment.<br />
-We will be performing some of the following basic operations.</p>
+<p>The objective of this lab is to explore MongoDB running on a Red Hat Enterprise Linux guest on an IBM LinuxONE system using MongoDB GUI tool Compass.</p>
+<p>We will be performing some of the following basic operations.</p>
 <ol>
-<li>Backup a MongoDB database</li>
-<li>Drop a database</li>
-<li>Restore the database</li>
-<li>Shutdown a MongoDB Enterprise</li>
-<li>Startup a MongoDB Enterprise</li>
+<li>Using Compass, make a Connection to your MongoDB deployment  </li>
+<li>Create a database and collection</li>
+<li>Bulk insert documents</li>
+<li>Insert a single document</li>
+<li>Query documents</li>
+<li>Update a document</li>
+<li>Delete a document </li>
 </ol>
-<h3 id="mongodb-basic-operations-steps">MongoDB basic operations steps</h3>
-<h4 id="backup-a-mongodb-database">Backup a MongoDB database</h4>
-<p>Make sure you are connected to the Linux guest from the previous step.</p>
-<p>In this lab we are going to use the <strong>mongodump</strong> utility to backup our lab database "labtest". </p>
-<p>Enter the following command to save the backup of the labtest database inside /tmp  directory</p>
+<h3 id="mongodb-compass-basics-lab-steps">MongoDB Compass basics lab steps</h3>
+<h4 id="using-compass-make-a-connection-to-your-mongodb-deployment">Using Compass make a connection to your MongoDB deployment</h4>
+<p>o   In this step we are going to use MongoDB Compass tool to connect to your MongoDB deployment on the Red Hat Linux Server <br />
+o   If MongoDB Compass is not installed, use the following link 
+<a href="https://www.mongodb.com/try/download/compass">MongoDB Compass Download</a>  <br />
+to download and install in your laptop</p>
+<p>Using the mouse, click the MongoDB Compass icon on your workstation and select Add new Connection. </p>
+<p><img src="../assets/images/compconnect.png" width="551" height="116" ></p>
+<p>In the URI field, enter:   mongodb://129.40.124.1xx:27017
+Replace the ip address (such as 129.40.124.1xx)  with your Linux guest ip address   and press connect   </p>
 <div class="highlight"><pre><span></span><code><span class="w">   </span>mongodump<span class="w"> </span>-v<span class="w"> </span>--db<span class="w"> </span>labtest<span class="w"> </span>--out<span class="w"> </span>/tmp
 </code></pre></div>
 <details class="- example">
@@ -789,8 +796,8 @@ drwxrwxrwt. 5 root root 4096 Mar 13 17:11 ../
 <h4 id="drop-a-mongodb-database">Drop a MongoDB database</h4>
 <p>In this lab we are going to use the <strong>db.dropDatabase()</strong> utility to drop our database "labtest". 
 First let us connect to <strong>mongosh</strong> and list the databases in the environment by using <strong>show dbs</strong> command</p>
-<p>Enter the following commands to connect to MongoDB and list the databases</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh<span class="p">;</span>
+<p>Enter the following command to connect to MongoDB and list the databases</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mongosh
 <span class="w">   </span>show<span class="w"> </span>dbs
 </code></pre></div>
 <details class="- example">
@@ -804,12 +811,12 @@ Enterprise test&gt;
 </code></pre></div>
 </details>
 <p>Now connect to the "labtest" database, drop that database by <strong>db.dropDatabase()</strong> utility and then list the databases by entering the following series of commands</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>labtest
-<span class="w">   </span>db.dropDatabase<span class="o">()</span>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>use<span class="w"> </span>labtest<span class="p">;</span>
+<span class="w">   </span>db.dropDatabase<span class="o">()</span><span class="p">;</span>
 <span class="w">   </span>show<span class="w"> </span>dbs
 </code></pre></div>
 <details class="- example">
-<summary>The following is an example where the terminal will show that there are only three databases in the deployment [Click to expand me]</summary>
+<summary>The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]</summary>
 <div class="highlight"><pre><span></span><code>Enterprise test&gt; use labtest
 switched to db labtest
 Enterprise labtest&gt; db.dropDatabase();
@@ -905,30 +912,29 @@ We need to specify the following parameters: Data, log file and specify the fork
 </code></pre></div>
 <details class="- example">
 <summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
-<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
-about to fork child process, waiting until server is ready for connections.
-forked process: 112970
-child process started successfully, parent exiting
-[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#mongosh
-Current Mongosh Log ID: 67d49ba95b1ee08487a63a57
-Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
-Using MongoDB:          7.0.17
-Using Mongosh:          2.4.2
-
-For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
-
-------
-   The server generated these startup warnings when booting
-   2025-03-14T16:56:05.980-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2025-03-14T16:56:06.187-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2025-03-14T16:56:06.187-04:00: You are running this process as the root user, which is not recommended
-   2025-03-14T16:56:06.187-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
-   2025-03-14T16:56:06.187-04:00: Soft rlimits for open file descriptors too low
-------
-
-Enterprise test&gt;
+<p>```
+  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all
+  about to fork child process, waiting until server is ready for connections.
+  forked process: 112970
+  child process started successfully, parent exiting
+  [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#mongosh
+  Current Mongosh Log ID: 67d49ba95b1ee08487a63a57
+  Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
+  Using MongoDB:          7.0.17
+  Using Mongosh:          2.4.2</p>
+<p>For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/</p>
+<hr />
+<div class="highlight"><pre><span></span><code> The server generated these startup warnings when booting
+ 2025-03-14T16:56:05.980-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+ 2025-03-14T16:56:06.187-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+ 2025-03-14T16:56:06.187-04:00: You are running this process as the root user, which is not recommended
+ 2025-03-14T16:56:06.187-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+ 2025-03-14T16:56:06.187-04:00: Soft rlimits for open file descriptors too low
 </code></pre></div>
+<hr />
+<p>Enterprise test&gt;</p>
 </details>
+<p>```</p>
 <p>In this part of the lab we will shutdown MongoDB by using  <strong>db.shutdownServer()</strong>. You must issue the db.shutdownServer() operation against the admin database. </p>
 <p>Enter the following commands  </p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span>use<span class="w"> </span>admin
@@ -948,6 +954,15 @@ Enterprise test&gt;
 <h2 id="summary">Summary</h2>
 <p>In this lab we have executed some basic MongoDB commands in a MongoDB deployment 
 using  <strong>mongosh</strong>  shell environment. </p>
+<p>Now you can exit the mongosh shell environment by issuing exit command</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">exit</span>
+</code></pre></div>
+<details class="- example">
+<summary>The following example shows the output [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise labtest&gt;    exit
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
 
 
 
