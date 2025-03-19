@@ -64,10 +64,10 @@ Enter the following command to list the /tmp/labtest directory
 In this lab we are going to use the **db.dropDatabase()** utility to drop our database "labtest". 
 First let us connect to **mongosh** and list the databases in the environment by using **show dbs** command
 
-Enter the following command to connect to MongoDB and list the databases
+Enter the following commands to connect to MongoDB and list the databases
 
 ``` bash
-   mongosh
+   mongosh;
    show dbs
 
 ```
@@ -88,12 +88,12 @@ Enter the following command to connect to MongoDB and list the databases
 Now connect to the "labtest" database, drop that database by **db.dropDatabase()** utility and then list the databases by entering the following series of commands
 
 ``` bash
-   use labtest;
-   db.dropDatabase();
+   use labtest
+   db.dropDatabase()
    show dbs
 ```
 
-???- example "The following is an example where the terminal will show that there are four databases in the deployment [Click to expand me]"
+???- example "The following is an example where the terminal will show that there are only three databases in the deployment [Click to expand me]"
 
       ```
       Enterprise test> use labtest
@@ -254,7 +254,7 @@ Enter the following commands
       Enterprise test>
 
       
-   ```
+      ```
      
 In this part of the lab we will shutdown MongoDB by using  **db.shutdownServer()**. You must issue the db.shutdownServer() operation against the admin database. 
 
@@ -283,21 +283,4 @@ Enter the following commands
 In this lab we have executed some basic MongoDB commands in a MongoDB deployment 
 using  **mongosh**  shell environment. 
 
-Now you can exit the mongosh shell environment by issuing exit command
-
-
-
-``` bash
-   exit
-```
-
-
-???- example "The following example shows the output [click to expand me]"
-
- 
-      ```
-      Enterprise labtest>    exit
-      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
-
-      ```
 

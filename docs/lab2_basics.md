@@ -26,24 +26,24 @@ You can see the MongoDB version and some informational / warning messages.
 ???- example "The following is an example where the terminal will show that you are connected to the MongoDB environment [click to expand me]"
 
       ```
-      [root@p1243-zvm1 MongoDB-Wildfire-Workshop]# mongosh
-      Current Mongosh Log ID: 67d31b0d4065a9f808a63a57
+      [root@itzvsi-pofxmfw MongoDB-Wildfire-Workshop]# mongosh
+      Current Mongosh Log ID: 67d9aa3e3a1856e5a3a63a57
       Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
-      Using MongoDB:          7.0.17
+      Using MongoDB:          8.0.5
       Using Mongosh:          2.4.2
 
       For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
 
       ------
-      The server generated these startup warnings when booting
-      2025-03-13T13:07:55.567-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-      2025-03-13T13:07:55.593-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-      2025-03-13T13:07:55.593-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
-      2025-03-13T13:07:55.593-04:00: vm.max_map_count is too low
+         The server generated these startup warnings when booting
+         2025-03-18T13:07:14.945-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+         2025-03-18T13:07:14.945-04:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+         2025-03-18T13:07:14.945-04:00: vm.max_map_count is too low
       ------
 
       Enterprise test>
 
+      
       ```
 
  

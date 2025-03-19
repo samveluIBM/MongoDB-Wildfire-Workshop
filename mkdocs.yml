@@ -4,7 +4,6 @@ nav:
   - Hands-On Labs:
     - Connectivity to IBM Cloud Lab Environment: cloudaccess.md
     - Connectivity to IBM On-premise Lab Environment: onpremaccess.md
-    - MongoDB V7 Installation: lab1_7_install.md 
     - MongoDB V8 Installation: lab1_8_install.md  
     - MongoDB Usage: lab2_basics.md 
     - MongoDB Operations: lab3_operations.md

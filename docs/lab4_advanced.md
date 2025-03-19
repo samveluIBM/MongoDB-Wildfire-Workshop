@@ -505,7 +505,7 @@ Enter the following commands
 
 
 ``` 
-   mongosh
+   
    show dbs
    use labtest 
       db.employee.insertOne(
