@@ -101,18 +101,3 @@
       tags: debug, final
       ansible.builtin.debug:
         msg: "MongoDB V8 installation complete."
-
-    - name: For MongoDB Compass change the ip forwarding
-      tags: sshconfigchange
-      ansible.builtin.lineinfile:
-        path: /etc/ssh/sshd_config
-        line: "  AllowTcpForwarding yes"
-        search_string: "AllowTcpForwarding"
-        backup: true
-
-    - name: Start mongod service.
-      tags: restart, service
-      ansible.builtin.service:
-        name: sshd
-        state: restarted
-        enabled: true
