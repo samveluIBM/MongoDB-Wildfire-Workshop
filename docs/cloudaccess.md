@@ -1,6 +1,6 @@
-# Lab Access to Linux guests on IBM Techzone (Cloud environment)
+# Lab Access to Linux guests on IBM Techzone (Cloud Environment)
 
-1. The Lab excercises will be performed on Red Hat Linux 8.x guests running on IBM Z system Cloud enviroment hosted from IBM Techzone 
+1. The Lab excercises will be performed on Red Hat Linux 9.x guests running on IBM Z system Cloud enviroment hosted from IBM Techzone 
 
 2. To access the IBM Techzone (Cloud enviroment) you will need an IBMid
 3. If you have IBMid, proceed to step 4,  otherwise execute the following steps to create the IBMid:

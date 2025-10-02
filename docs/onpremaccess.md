@@ -1,6 +1,6 @@
 # Lab Access to Linux guests on IBM Techzone (On-premise environment)
 
-1. The Lab excercises will be performed on Red Hat Linux 8.x guests running on IBM Z system in an On-premise enviroment hosted by IBM Techzone 
+1. The Lab excercises will be performed on Red Hat Linux 9.x guests running on IBM Z system in an On-premise enviroment hosted by IBM Techzone 
 
 2. To access the IBM Techzone (On-premise) you need a vpn id and password
 3. Connect to the VPN by using Cisco AnyConnect client. 
