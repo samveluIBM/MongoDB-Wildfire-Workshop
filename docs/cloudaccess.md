@@ -1,4 +1,4 @@
-# Lab Access to Linux guests on IBM Techzone (Monday 12:51 PM  cloud environment)
+# Lab Access to Linux guests on IBM Techzone (Monday 1:06 PM  cloud environment)
 
 1. The Lab excercises will be performed on Red Hat Linux 9.x guests running on IBM Z system Cloud enviroment hosted from IBM Techzone 
 
