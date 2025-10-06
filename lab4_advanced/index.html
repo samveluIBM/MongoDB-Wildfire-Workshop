@@ -1,0 +1,1480 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MongoDB Wildfire Workshop on LinuxONE">
+      
+      
+        <meta name="author" content="Sam Amsavelu">
+      
+      
+        <link rel="canonical" href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/lab4_advanced/">
+      
+      
+        <link rel="prev" href="../lab3_operations/">
+      
+      
+        <link rel="next" href="../lab5_compass/">
+      
+      
+      <link rel="icon" href="../assets/images/wsc-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>MongoDB Advanced Operations - MongoDB Wildfire Workshop on LinuxONE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mongodb-advanced-operations-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MongoDB Wildfire Workshop on LinuxONE" class="md-header__button md-logo" aria-label="MongoDB Wildfire Workshop on LinuxONE" data-md-component="logo">
+      
+  <img src="../assets/images/wsc-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MongoDB Wildfire Workshop on LinuxONE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MongoDB Advanced Operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MongoDB Wildfire Workshop on LinuxONE" class="md-nav__button md-logo" aria-label="MongoDB Wildfire Workshop on LinuxONE" data-md-component="logo">
+      
+  <img src="../assets/images/wsc-logo.png" alt="logo">
+
+    </a>
+    MongoDB Wildfire Workshop on LinuxONE
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/samveluIBM/MongoDB-Wildfire-Workshop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hands-On Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudaccess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connectivity to IBM Cloud Lab Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onpremaccess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connectivity to IBM On-premise Lab Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_8_install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB V8 Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MongoDB Advanced Operations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB Advanced Operations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB advanced operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB advanced operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-a-mongodb-replication-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup a MongoDB replication cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup a MongoDB replication cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-first-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the first replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-second-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the second replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-third-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the third replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-replication-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the replication nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check replication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5_compass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MongoDB Compass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localdocbuild/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Locally Building docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-advanced-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB advanced operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB advanced operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-a-mongodb-replication-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup a MongoDB replication cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup a MongoDB replication cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-first-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the first replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-second-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the second replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-third-replication-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the third replication node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-the-replication-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialize the replication nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check replication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mongodb-advanced-operations-lab">MongoDB Advanced operations lab</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab we will perform some advanced MongoDB operations in a MongoDB deployment.  </p>
+<ol>
+<li>Setup a MongoDB replication cluster </li>
+</ol>
+<h3 id="mongodb-advanced-operations">MongoDB advanced operations</h3>
+<h4 id="setup-a-mongodb-replication-cluster">Setup a MongoDB replication cluster</h4>
+<p>Make sure you are connected to your Linux guest from the previous step.</p>
+<p>In this part of the lab we are going to setup a three node MongoDB replication cluster in a single Linux Guest, <strong>Just for lab</strong> Do not try in production. In production environment we need to setup the MongoDB replication nodes at least in three different servers.</p>
+<p>We will follow these steps</p>
+<p>Start the mongod services specifying the name of the replica set. In our case <strong>rs0</strong>.  </p>
+<p>Start another mongod instance with a different database directory and a port number</p>
+<p>Start one more mongod instance with a different database directory and a port number</p>
+<p>Start replication</p>
+<p>Check the replication </p>
+<h6 id="setup-the-first-replication-node">Setup the first replication node</h6>
+<p>We are going to setup a three node replication node and in the first node which will act as a primary node.</p>
+<p>We will start the mongod services for the first node with the following parameters:</p>
+<p>The name of the replica set as <strong>rs0</strong></p>
+<p>The data file path as <strong>/var/lib/mongodb</strong></p>
+<p>The log file path as <strong>/var/log/mongodb/mongod.log</strong></p>
+<p>And we will set the the mongod to be running in the background  </p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mongod<span class="w">  </span>--dbpath<span class="w"> </span>/var/lib/mongodb<span class="w"> </span>--logpath<span class="w"> </span>/var/log/mongodb/mongod.log<span class="w"> </span>--fork<span class="w"> </span>--bind_ip_all<span class="w"> </span>--replSet<span class="w"> </span>rs0
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod  --dbpath /var/lib/mongodb --logpath /var/log/mongodb/mongod.log --fork --bind_ip_all --replSet rs0
+about to fork child process, waiting until server is ready for connections.
+forked process: 113404
+child process started successfully, parent exiting
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
+<h6 id="setup-the-second-replication-node">Setup the second replication node</h6>
+<p>We are going to setup the second node in our replication cluster which will act as secondary node. As our nodes are running in the same Linux guest it should have its own data, log directory as well as a new port to listen.</p>
+<p>We will start the mongod services for the second node with the following parameters:</p>
+<p>The name of the replica set as <strong>rs0</strong></p>
+<p>The data file path as <strong>/var/lib/mongodb1</strong></p>
+<p>The log file path as <strong>/var/log/mongodb1/mongod.log</strong></p>
+<p>The port number as  <strong>27018</strong>  </p>
+<p>And we will set the the mongod to be running in the background</p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mkdir<span class="w"> </span>/var/lib/mongodb1/<span class="p">;</span>
+<span class="w">   </span>mkdir<span class="w"> </span>/var/log/mongodb1/<span class="p">;</span>
+<span class="w">   </span>mongod<span class="w"> </span>--port<span class="w"> </span><span class="m">27018</span><span class="w">  </span>--dbpath<span class="w"> </span>/var/lib/mongodb1<span class="w"> </span>--logpath<span class="w"> </span>/var/log/mongodb1/mongod.log<span class="w"> </span>--fork<span class="w"> </span>--bind_ip_all<span class="w"> </span>--replSet<span class="w"> </span>rs0
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mkdir /var/lib/mongodb1/;
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mkdir /var/log/mongodb1/;
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod --port 27018  --dbpath /var/lib/mongodb1 --logpath /var/log/mongodb1/mongod.log --fork --bind_ip_all --replSet rs0
+about to fork child process, waiting until server is ready for connections.
+forked process: 113514
+child process started successfully, parent exiting
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
+<h6 id="setup-the-third-replication-node">Setup the third replication node</h6>
+<p>We are going to setup the third node in our replication cluster which will act as another secondary node. As our nodes are running in the same Linux guest this node should also have its own data, log directory as well as a new port to listen.</p>
+<p>We will start the mongod services for the second node with the following parameters:</p>
+<p>The name of the replica set as <strong>rs0</strong></p>
+<p>The data file path as <strong>/var/lib/mongodb2</strong></p>
+<p>The log file path as <strong>/var/log/mongodb2/mongod.log</strong></p>
+<p>The port number as  <strong>27019</strong>  </p>
+<p>And we will set the the mongod to be running in the background</p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>mkdir<span class="w"> </span>/var/lib/mongodb2/<span class="p">;</span>
+<span class="w">   </span>mkdir<span class="w"> </span>/var/log/mongodb2/<span class="p">;</span>
+<span class="w">   </span>mongod<span class="w"> </span>--port<span class="w"> </span><span class="m">27019</span><span class="w">  </span>--dbpath<span class="w"> </span>/var/lib/mongodb2<span class="w"> </span>--logpath<span class="w"> </span>/var/log/mongodb2/mongod.log<span class="w"> </span>--fork<span class="w"> </span>--bind_ip_all<span class="w"> </span>--replSet<span class="w"> </span>rs0
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the MongoDB is started and waiting for connections [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mkdir /var/lib/mongodb2/;
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mkdir /var/log/mongodb2/;
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#    mongod --port 27019  --dbpath /var/lib/mongodb2 --logpath /var/log/mongodb2/mongod.log --fork --bind_ip_all --replSet rs0
+about to fork child process, waiting until server is ready for connections.
+forked process: 113604
+child process started successfully, parent exiting
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
+<h6 id="initialize-the-replication-nodes">Initialize the replication nodes</h6>
+<p>To initialize the replication cluster, open mongosh shell and run <strong>rs.initiate()</strong> in the primary node </p>
+<p>Add the MongoDB secondary nodes that we already started, by running <strong>rs.add(<hostname:port>)</strong> </p>
+<p>You can run <strong>rs.status()</strong> to check the replication node status</p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code>   mongosh
+   rs.initiate() 
+   rs.status() 
+   **In the following command change the hostname to your hostname**
+   rs.add(&quot;HOSTNAME:27018&quot;)
+   rs.status() 
+   rs.add(&quot;HOSTNAME:27019&quot;)
+   Enterprise test&gt; rs.status() 
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example where the terminal will show that the MongoDB instances are started and waiting for replication [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>[root@p1243-zvm1 MongoDB-Wildfire-Workshop]# mongosh
+Current Mongosh Log ID: 67d4aef9b5283a4da4a63a57
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
+Using MongoDB:          7.0.17
+Using Mongosh:          2.4.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-03-14T18:00:12.416-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-03-14T18:00:12.623-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-03-14T18:00:12.623-04:00: You are running this process as the root user, which is not recommended
+   2025-03-14T18:00:12.623-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2025-03-14T18:00:12.623-04:00: Soft rlimits for open file descriptors too low
+------
+
+Enterprise test&gt; cls
+
+Enterprise test&gt; rs.initiate()
+{
+info2: &#39;no configuration specified. Using a default configuration for the set&#39;,
+me: &#39;p1243-zvm1:27017&#39;,
+ok: 1
+}
+Enterprise rs0 [direct: other] test&gt; rs.status()
+{
+set: &#39;rs0&#39;,
+date: ISODate(&#39;2025-03-14T22:35:10.178Z&#39;),
+myState: 1,
+term: Long(&#39;1&#39;),
+syncSourceHost: &#39;&#39;,
+syncSourceId: -1,
+heartbeatIntervalMillis: Long(&#39;2000&#39;),
+majorityVoteCount: 1,
+writeMajorityCount: 1,
+votingMembersCount: 1,
+writableVotingMembersCount: 1,
+optimes: {
+   lastCommittedOpTime: { ts: Timestamp({ t: 1741991701, i: 23 }), t: Long(&#39;1&#39;) },
+   lastCommittedWallTime: ISODate(&#39;2025-03-14T22:35:01.597Z&#39;),
+   readConcernMajorityOpTime: { ts: Timestamp({ t: 1741991701, i: 23 }), t: Long(&#39;1&#39;) },
+   appliedOpTime: { ts: Timestamp({ t: 1741991701, i: 23 }), t: Long(&#39;1&#39;) },
+   durableOpTime: { ts: Timestamp({ t: 1741991701, i: 23 }), t: Long(&#39;1&#39;) },
+   lastAppliedWallTime: ISODate(&#39;2025-03-14T22:35:01.597Z&#39;),
+   lastDurableWallTime: ISODate(&#39;2025-03-14T22:35:01.597Z&#39;)
+},
+lastStableRecoveryTimestamp: Timestamp({ t: 1741991701, i: 1 }),
+electionCandidateMetrics: {
+   lastElectionReason: &#39;electionTimeout&#39;,
+   lastElectionDate: ISODate(&#39;2025-03-14T22:35:01.518Z&#39;),
+   electionTerm: Long(&#39;1&#39;),
+   lastCommittedOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   lastSeenOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   numVotesNeeded: 1,
+   priorityAtElection: 1,
+   electionTimeoutMillis: Long(&#39;10000&#39;),
+   newTermStartDate: ISODate(&#39;2025-03-14T22:35:01.535Z&#39;),
+   wMajorityWriteAvailabilityDate: ISODate(&#39;2025-03-14T22:35:01.549Z&#39;)
+},
+members: [
+   {
+      _id: 0,
+      name: &#39;p1243-zvm1:27017&#39;,
+      health: 1,
+      state: 1,
+      stateStr: &#39;PRIMARY&#39;,
+      uptime: 2098,
+      optime: { ts: Timestamp({ t: 1741991701, i: 23 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:35:01.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:35:01.597Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:35:01.597Z&#39;),
+      syncSourceHost: &#39;&#39;,
+      syncSourceId: -1,
+      infoMessage: &#39;Could not find member to sync from&#39;,
+      electionTime: Timestamp({ t: 1741991701, i: 2 }),
+      electionDate: ISODate(&#39;2025-03-14T22:35:01.000Z&#39;),
+      configVersion: 1,
+      configTerm: 1,
+      self: true,
+      lastHeartbeatMessage: &#39;&#39;
+   }
+],
+ok: 1,
+&#39;$clusterTime&#39;: {
+   clusterTime: Timestamp({ t: 1741991701, i: 23 }),
+   signature: {
+      hash: Binary.createFromBase64(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#39;, 0),
+      keyId: Long(&#39;0&#39;)
+   }
+},
+operationTime: Timestamp({ t: 1741991701, i: 23 })
+}
+Enterprise rs0 [direct: primary] test&gt;
+
+-------------------------
+Enterprise rs0 [direct: primary] test&gt; rs.add(&quot;p1243-zvm1:27018&quot;)
+{
+ok: 1,
+&#39;$clusterTime&#39;: {
+   clusterTime: Timestamp({ t: 1741991791, i: 1 }),
+   signature: {
+      hash: Binary.createFromBase64(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#39;, 0),
+      keyId: Long(&#39;0&#39;)
+   }
+},
+operationTime: Timestamp({ t: 1741991791, i: 1 })
+}
+Enterprise rs0 [direct: primary] test&gt; rs.status()
+{
+set: &#39;rs0&#39;,
+date: ISODate(&#39;2025-03-14T22:36:35.567Z&#39;),
+myState: 1,
+term: Long(&#39;1&#39;),
+syncSourceHost: &#39;&#39;,
+syncSourceId: -1,
+heartbeatIntervalMillis: Long(&#39;2000&#39;),
+majorityVoteCount: 2,
+writeMajorityCount: 2,
+votingMembersCount: 2,
+writableVotingMembersCount: 2,
+optimes: {
+   lastCommittedOpTime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+   lastCommittedWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+   readConcernMajorityOpTime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+   appliedOpTime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+   durableOpTime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+   lastAppliedWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+   lastDurableWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;)
+},
+lastStableRecoveryTimestamp: Timestamp({ t: 1741991751, i: 1 }),
+electionCandidateMetrics: {
+   lastElectionReason: &#39;electionTimeout&#39;,
+   lastElectionDate: ISODate(&#39;2025-03-14T22:35:01.518Z&#39;),
+   electionTerm: Long(&#39;1&#39;),
+   lastCommittedOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   lastSeenOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   numVotesNeeded: 1,
+   priorityAtElection: 1,
+   electionTimeoutMillis: Long(&#39;10000&#39;),
+   newTermStartDate: ISODate(&#39;2025-03-14T22:35:01.535Z&#39;),
+   wMajorityWriteAvailabilityDate: ISODate(&#39;2025-03-14T22:35:01.549Z&#39;)
+},
+members: [
+   {
+      _id: 0,
+      name: &#39;p1243-zvm1:27017&#39;,
+      health: 1,
+      state: 1,
+      stateStr: &#39;PRIMARY&#39;,
+      uptime: 2183,
+      optime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:36:33.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+      syncSourceHost: &#39;&#39;,
+      syncSourceId: -1,
+      infoMessage: &#39;Could not find member to sync from&#39;,
+      electionTime: Timestamp({ t: 1741991701, i: 2 }),
+      electionDate: ISODate(&#39;2025-03-14T22:35:01.000Z&#39;),
+      configVersion: 3,
+      configTerm: 1,
+      self: true,
+      lastHeartbeatMessage: &#39;&#39;
+   },
+   {
+      _id: 1,
+      name: &#39;p1243-zvm1:27018&#39;,
+      health: 1,
+      state: 2,
+      stateStr: &#39;SECONDARY&#39;,
+      uptime: 4,
+      optime: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDurable: { ts: Timestamp({ t: 1741991793, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:36:33.000Z&#39;),
+      optimeDurableDate: ISODate(&#39;2025-03-14T22:36:33.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:36:33.074Z&#39;),
+      lastHeartbeat: ISODate(&#39;2025-03-14T22:36:35.077Z&#39;),
+      lastHeartbeatRecv: ISODate(&#39;2025-03-14T22:36:33.577Z&#39;),
+      pingMs: Long(&#39;0&#39;),
+      lastHeartbeatMessage: &#39;&#39;,
+      syncSourceHost: &#39;p1243-zvm1:27017&#39;,
+      syncSourceId: 0,
+      infoMessage: &#39;&#39;,
+      configVersion: 3,
+      configTerm: 1
+   }
+],
+ok: 1,
+&#39;$clusterTime&#39;: {
+   clusterTime: Timestamp({ t: 1741991793, i: 1 }),
+   signature: {
+      hash: Binary.createFromBase64(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#39;, 0),
+      keyId: Long(&#39;0&#39;)
+   }
+},
+operationTime: Timestamp({ t: 1741991793, i: 1 })
+}
+Enterprise rs0 [direct: primary] test&gt;
+
+---------------------------------
+Enterprise rs0 [direct: primary] test&gt; rs.add(&quot;p1243-zvm1:27019&quot;)
+{
+ok: 1,
+&#39;$clusterTime&#39;: {
+   clusterTime: Timestamp({ t: 1741991876, i: 1 }),
+   signature: {
+      hash: Binary.createFromBase64(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#39;, 0),
+      keyId: Long(&#39;0&#39;)
+   }
+},
+operationTime: Timestamp({ t: 1741991876, i: 1 })
+}
+Enterprise rs0 [direct: primary] test&gt; rs.status()
+{
+set: &#39;rs0&#39;,
+date: ISODate(&#39;2025-03-14T22:38:04.243Z&#39;),
+myState: 1,
+term: Long(&#39;1&#39;),
+syncSourceHost: &#39;&#39;,
+syncSourceId: -1,
+heartbeatIntervalMillis: Long(&#39;2000&#39;),
+majorityVoteCount: 2,
+writeMajorityCount: 2,
+votingMembersCount: 3,
+writableVotingMembersCount: 3,
+optimes: {
+   lastCommittedOpTime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+   lastCommittedWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+   readConcernMajorityOpTime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+   appliedOpTime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+   durableOpTime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+   lastAppliedWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+   lastDurableWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;)
+},
+lastStableRecoveryTimestamp: Timestamp({ t: 1741991878, i: 1 }),
+electionCandidateMetrics: {
+   lastElectionReason: &#39;electionTimeout&#39;,
+   lastElectionDate: ISODate(&#39;2025-03-14T22:35:01.518Z&#39;),
+   electionTerm: Long(&#39;1&#39;),
+   lastCommittedOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   lastSeenOpTimeAtElection: { ts: Timestamp({ t: 1741991701, i: 1 }), t: Long(&#39;-1&#39;) },
+   numVotesNeeded: 1,
+   priorityAtElection: 1,
+   electionTimeoutMillis: Long(&#39;10000&#39;),
+   newTermStartDate: ISODate(&#39;2025-03-14T22:35:01.535Z&#39;),
+   wMajorityWriteAvailabilityDate: ISODate(&#39;2025-03-14T22:35:01.549Z&#39;)
+},
+members: [
+   {
+      _id: 0,
+      name: &#39;p1243-zvm1:27017&#39;,
+      health: 1,
+      state: 1,
+      stateStr: &#39;PRIMARY&#39;,
+      uptime: 2272,
+      optime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:37:58.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      syncSourceHost: &#39;&#39;,
+      syncSourceId: -1,
+      infoMessage: &#39;&#39;,
+      electionTime: Timestamp({ t: 1741991701, i: 2 }),
+      electionDate: ISODate(&#39;2025-03-14T22:35:01.000Z&#39;),
+      configVersion: 5,
+      configTerm: 1,
+      self: true,
+      lastHeartbeatMessage: &#39;&#39;
+   },
+   {
+      _id: 1,
+      name: &#39;p1243-zvm1:27018&#39;,
+      health: 1,
+      state: 2,
+      stateStr: &#39;SECONDARY&#39;,
+      uptime: 93,
+      optime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDurable: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:37:58.000Z&#39;),
+      optimeDurableDate: ISODate(&#39;2025-03-14T22:37:58.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      lastHeartbeat: ISODate(&#39;2025-03-14T22:38:02.651Z&#39;),
+      lastHeartbeatRecv: ISODate(&#39;2025-03-14T22:38:02.651Z&#39;),
+      pingMs: Long(&#39;0&#39;),
+      lastHeartbeatMessage: &#39;&#39;,
+      syncSourceHost: &#39;p1243-zvm1:27017&#39;,
+      syncSourceId: 0,
+      infoMessage: &#39;&#39;,
+      configVersion: 5,
+      configTerm: 1
+   },
+   {
+      _id: 2,
+      name: &#39;p1243-zvm1:27019&#39;,
+      health: 1,
+      state: 2,
+      stateStr: &#39;SECONDARY&#39;,
+      uptime: 7,
+      optime: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDurable: { ts: Timestamp({ t: 1741991878, i: 1 }), t: Long(&#39;1&#39;) },
+      optimeDate: ISODate(&#39;2025-03-14T22:37:58.000Z&#39;),
+      optimeDurableDate: ISODate(&#39;2025-03-14T22:37:58.000Z&#39;),
+      lastAppliedWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      lastDurableWallTime: ISODate(&#39;2025-03-14T22:37:58.648Z&#39;),
+      lastHeartbeat: ISODate(&#39;2025-03-14T22:38:02.653Z&#39;),
+      lastHeartbeatRecv: ISODate(&#39;2025-03-14T22:38:03.152Z&#39;),
+      pingMs: Long(&#39;2&#39;),
+      lastHeartbeatMessage: &#39;&#39;,
+      syncSourceHost: &#39;p1243-zvm1:27018&#39;,
+      syncSourceId: 1,
+      infoMessage: &#39;&#39;,
+      configVersion: 5,
+      configTerm: 1
+   }
+],
+ok: 1,
+&#39;$clusterTime&#39;: {
+   clusterTime: Timestamp({ t: 1741991878, i: 1 }),
+   signature: {
+      hash: Binary.createFromBase64(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#39;, 0),
+      keyId: Long(&#39;0&#39;)
+   }
+},
+operationTime: Timestamp({ t: 1741991878, i: 1 })
+}
+Enterprise rs0 [direct: primary] test&gt;
+</code></pre></div>
+</details>
+<h6 id="check-replication">Check replication</h6>
+<p>Now let us check if the replication is happening correctly.</p>
+<p>In the PRIMARY instance, insert a document to our MongoDB Database labtest </p>
+<p>Enter the following commands  </p>
+<div class="highlight"><pre><span></span><code>   show dbs
+   use labtest 
+      db.employee.insertOne(
+   {
+    name: &quot;Iron Man&quot;,
+    number: 5000  
+      }
+     )
+   db.employee.find()
+</code></pre></div>
+<details class="- example">
+<summary>The following is an example output of the previous commands [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise rs0 [direct: primary] test&gt; show dbs
+admin     80.00 KiB
+config   200.00 KiB
+labtest   40.00 KiB
+local    732.00 KiB
+Enterprise rs0 [direct: primary] test&gt;    
+Enterprise rs0 [direct: primary] test&gt; use labtest
+switched to db labtest
+Enterprise rs0 [direct: primary] labtest&gt;    db.employee.find()
+[
+{
+   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
+   name: &#39;John Doe&#39;,
+   number: 1000,
+   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
+},
+{
+   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
+   name: &#39;Super Man&#39;,
+   number: 2000
+}
+]
+Enterprise rs0 [direct: primary] labtest&gt; db.employee.insertOne(
+...    {
+...     name: &quot;Iron Man&quot;,
+...     number: 5000
+...    }
+...   )
+{
+acknowledged: true,
+insertedId: ObjectId(&#39;67d5e07dbc29fd3a01a63a58&#39;)
+}
+Enterprise rs0 [direct: primary] labtest&gt; db.employee.find()
+[
+{
+   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
+   name: &#39;John Doe&#39;,
+   number: 1000,
+   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
+},
+{
+   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
+   name: &#39;Super Man&#39;,
+   number: 2000
+},
+{
+   _id: ObjectId(&#39;67d5e07dbc29fd3a01a63a58&#39;),
+   name: &#39;Iron Man&#39;,
+   number: 5000
+}
+]
+Enterprise rs0 [direct: primary] labtest&gt;
+</code></pre></div>
+</details>
+<p>Now it is time to check in the SECONDARY instances to see if the replication happened.</p>
+<p>To connect to MongoDB instances running other than the default port we have to specify the port number. 
+Once connected check if the labtest database has the same set of documents as in the primary instance. Use the following set of commands after exiting the primary instance mongo shell.</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">exit</span>
+<span class="w">   </span>mongosh<span class="w"> </span>--port<span class="w"> </span><span class="m">27018</span>
+<span class="w">   </span>show<span class="w"> </span>dbs
+<span class="w">   </span>use<span class="w"> </span>labtest
+<span class="w">   </span>db.employee.find<span class="o">()</span>
+</code></pre></div>
+As seen in the following output the number of databases and the labtest database records are same as in the primary instance</p>
+<details class="- example">
+<summary>The following is an example output of the previous commands [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise rs0 [direct: primary] labtest&gt; exit
+[root@p1243-zvm1 ~]# mongosh --port 27018
+Current Mongosh Log ID: 67d5e4fc11240b7aa8a63a57
+Connecting to:          mongodb://127.0.0.1:27018/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
+Using MongoDB:          7.0.17
+Using Mongosh:          2.4.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-03-14T18:14:08.067-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-03-14T18:14:08.122-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-03-14T18:14:08.122-04:00: You are running this process as the root user, which is not recommended
+   2025-03-14T18:14:08.123-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2025-03-14T18:14:08.123-04:00: Soft rlimits for open file descriptors too low
+------
+
+Enterprise rs0 [direct: secondary] test&gt; cls
+
+Enterprise rs0 [direct: secondary] test&gt; show dbs
+admin     80.00 KiB
+config   308.00 KiB
+labtest   72.00 KiB
+local    700.00 KiB
+Enterprise rs0 [direct: secondary] test&gt; use labtest
+switched to db labtest
+Enterprise rs0 [direct: secondary] labtest&gt; db.employee.find()
+[
+{
+   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
+   name: &#39;John Doe&#39;,
+   number: 1000,
+   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
+},
+{
+   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
+   name: &#39;Super Man&#39;,
+   number: 2000
+},
+{
+   _id: ObjectId(&#39;67d5e07dbc29fd3a01a63a58&#39;),
+   name: &#39;Iron Man&#39;,
+   number: 5000
+}
+]
+Enterprise rs0 [direct: secondary]
+</code></pre></div>
+</details>
+<p>Now let us check the third instance running at port 27019 if the labtest database has the same set of documents as in the primary instance. Use the following set of commands after exiting the connected mongo shell.</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">exit</span>
+<span class="w">   </span>mongosh<span class="w"> </span>--port<span class="w"> </span><span class="m">27019</span>
+<span class="w">   </span>show<span class="w"> </span>dbs
+<span class="w">   </span>use<span class="w"> </span>labtest
+<span class="w">   </span>db.employee.find<span class="o">()</span>
+</code></pre></div>
+As seen in the following output the number of databases and the labtest database records are same as in the primary instance</p>
+<details class="- example">
+<summary>The following is an example output of the previous commands [Click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise rs0 [direct: secondary] labtest&gt; exit
+[root@p1243-zvm1 ~]# mongosh --port 27019
+Current Mongosh Log ID: 67d5e54bc60fc8c961a63a57
+Connecting to:          mongodb://127.0.0.1:27019/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.4.2
+Using MongoDB:          7.0.17
+Using Mongosh:          2.4.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-03-14T18:26:33.204-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-03-14T18:26:33.227-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-03-14T18:26:33.227-04:00: You are running this process as the root user, which is not recommended
+   2025-03-14T18:26:33.227-04:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2025-03-14T18:26:33.227-04:00: Soft rlimits for open file descriptors too low
+------
+
+Enterprise rs0 [direct: secondary] test&gt; cls
+
+Enterprise rs0 [direct: secondary] test&gt; use labtest
+switched to db labtest
+Enterprise rs0 [direct: secondary] labtest&gt; db.employee.find()
+[
+{
+   _id: ObjectId(&#39;67d46f56d027864d37a63a58&#39;),
+   name: &#39;John Doe&#39;,
+   number: 1000,
+   lastUpdated: ISODate(&#39;2025-03-14T18:03:35.947Z&#39;)
+},
+{
+   _id: ObjectId(&#39;67d46f61d027864d37a63a5a&#39;),
+   name: &#39;Super Man&#39;,
+   number: 2000
+},
+{
+   _id: ObjectId(&#39;67d5e07dbc29fd3a01a63a58&#39;),
+   name: &#39;Iron Man&#39;,
+   number: 5000
+}
+]
+Enterprise rs0 [direct: secondary] labtest&gt;
+</code></pre></div>
+</details>
+<h2 id="summary">Summary</h2>
+<p>In this lab we have setup a replication cluster and did some basic replication activities. </p>
+<p>Now you can exit the mongosh shell environment by issuing exit command</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">exit</span>
+</code></pre></div>
+<details class="- example">
+<summary>The following example shows the output [click to expand me]</summary>
+<div class="highlight"><pre><span></span><code>Enterprise labtest&gt;    exit
+[root@p1243-zvm1 MongoDB-Wildfire-Workshop]#
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
